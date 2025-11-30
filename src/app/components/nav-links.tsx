@@ -3,37 +3,26 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import clsx from "clsx";
-import { useEffect, useState } from "react";
-import { getSession } from "next-auth/react";
-import { User } from "../lib/definition";
-
+import { useSession } from "next-auth/react";
 
 const links = [
   { name: "Home", href: "/" },
-  {name: "Service",href: "/pages/service"},
   { name: "About", href: "/pages/about" },
+  { name: "Service", href: "/pages/service" },
   { name: "Dashboard", href: "/pages/dashboard" },
-  { name: "Contact", href: "/pages/contact" },
-    {name: "Destinations",href: "/pages/destinations"},
+  { name: "Destinations", href: "/pages/destinations" },
   { name: "FAQ", href: "/pages/faq" },
+  { name: "Contact", href: "/pages/contact" },
 ];
 
 export default function NavLinks() {
   const pathname = usePathname();
-    const [user, setUser] = useState<User | null>(null);
-  useEffect(() => {
-      getSession().then((session:any) => {
-        if (session?.user) {
-          setUser(session.user)
-        } else{
-          setUser(null)
-        }
-      })
-    }, [0]);
+  const { data: sessionData, status } = useSession();
   return (
     <>
       {links.map((link) => {
-        if (link.name === "Dashboard" && !user?.name) return null;
+        if (link.name === "Dashboard" && status !== "authenticated")
+          return null;
         return (
           <Link
             key={link.name}
@@ -41,7 +30,7 @@ export default function NavLinks() {
             className={clsx(
               "flex items-center justify-center gap-2 p-3 text-sm font-medium",
               {
-                "text-orange-600": (pathname === link.href),
+                "text-orange-600": pathname === link.href,
               }
             )}
           >

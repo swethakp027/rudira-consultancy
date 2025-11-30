@@ -1,7 +1,8 @@
-"use client";
+"use client"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CONSTANTS } from "@/app/lib/constants";
+import PageHeader from "@/app/components/page-header";
 
 export default function Page() {
   const router = useRouter();
@@ -45,7 +46,14 @@ export default function Page() {
   };
 
   return (
-    <div className="bg-white p-8 rounded shadow">
+    <div>
+    <PageHeader><div className="text-6xl absolute bottom-1 font-bold">Get in touch</div></PageHeader>
+    <div className="flex justify-around px-30 py-5 gap-2">
+    <div className="w-1/2">
+      <p>GET IN TOUCH</p>
+      <div>Visit one of our agency contact us today</div>
+    </div>
+    <div className="bg-white p-8 rounded shadow w-1/2">
       <h2 className="text-2xl mb-4 text-purple-700">Leave a Message</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -133,6 +141,8 @@ export default function Page() {
           </button>
         </div>
       </form>
+    </div>
+    </div>
     </div>
   );
 }

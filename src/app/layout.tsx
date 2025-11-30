@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/nav-bar";
 import Footer from "./components/footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { SessionProvider } from "next-auth/react";
+import { ThemeContextProvider } from "./context/ThemeContext";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Rudira Consultancy",
@@ -27,9 +19,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
-        <div className="h-24"><NavBar /></div>
-        {children}
-        <div className="h-60"><Footer/></div>
+        <Providers>
+          <ThemeContextProvider>
+            <SessionProvider>
+              <div className="h-24 px-30 py-4">
+                <NavBar />
+              </div>
+              {children}
+              <div className="h-80 px-30 py-4 bg-zinc-50">
+                <Footer />
+              </div>
+            </SessionProvider>
+          </ThemeContextProvider>
+        </Providers>
       </body>
     </html>
   );

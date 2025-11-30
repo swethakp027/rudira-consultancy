@@ -4,7 +4,7 @@ import UserButton from '@/app/components/login/user-button';
 
 export default function NavBar() {
   return (
-    <div className="flex h-full justify-between px-3 py-4 md:px-2">
+    <div className="flex h-full justify-between">
         <Image
           src="/logo.png"
           alt="my logo"

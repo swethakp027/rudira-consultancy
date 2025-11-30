@@ -2,7 +2,9 @@ import { auth } from "../../../../auth.config";
 import Popover from "../popover";
 import Image from "next/image";
 
-import { SignIn, SignOut } from "./auth-component";
+import { SignIn } from "./auth-component";
+import SignOut from "./sign-out";
+import ToggleGroups from "../toggle-group";
 
 export default async function UserButton() {
   const session = await auth();
@@ -30,6 +32,7 @@ export default async function UserButton() {
         <div>
           <h3 className="font-semibold mb-1">{session.user.name}</h3>
           <p className="text-sm text-gray-600 pb-5">{session.user.email}</p>
+          <div className="mb-5"><ToggleGroups/></div>
           <hr />
           <SignOut />
         </div>
