@@ -8,8 +8,8 @@ export default function NavBar() {
         <Image
           src="/logo.png"
           alt="my logo"
-          width={180}
-          height={38}
+          width={200}
+          height={40}
           priority
         />
         <div className="flex items-center">

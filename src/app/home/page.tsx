@@ -1,7 +1,457 @@
-export default function Page() {
+"use client";
+import Image from "next/image";
+import DialogModal from "../components/dialog";
+import Dropdown from "../components/dropdown";
+import { useState } from "react";
+import { ChevronRight } from "lucide-react";
+
+export default function HomePage() {
+  const [subscribedEmail, setSubscribedEmail] = useState('')
+  const [loading, setLoading] = useState(false);
+  const [service, setService] = useState("Choose Your Service");
+  const [open, setOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    service: "",
+  });
+
+  const handleSelect = (value: string) => {
+    setService(value);
+    setFormData((prevData) => ({
+      ...prevData,
+      service: value,
+    }));
+  };
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log(formData);
+    sendEmail(e);
+  };
+
+  const sendEmail = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const res = await fetch("/api/send", {
+      method: "POST",
+      body: JSON.stringify({
+        subject: "User contacted",
+        message: formData,
+      }),
+    });
+
+    const data = await res.json();
+    setLoading(false);
+
+    if (data.success) {
+      console.log("Email sent successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        mobile: "",
+        service: "",
+      });
+      setService("Choose Your Service");
+      setOpen(false);
+    } else {
+      console.log("Failed to send email.");
+    }
+  };
+
+  const subscribeNewsLetter =()=>{
+    console.log('news letter subscribed')
+  }
+
   return (
-    <div>
-      <h1 className="text-purple-800">Home</h1>
-    </div>
+    <>
+      <div className="flex pl-30 items-center">
+        <div className="w-230">
+          <h1 className="text-4xl font-black">
+            We help build your dream career
+          </h1>
+          <p className="py-8">
+            Simplifying your abroad education journey with right resources
+          </p>
+          <p className="font-bold text-3xl">Planning to Study Abroad ?</p>
+          <div className="py-5">
+            <DialogModal
+              trigger={
+                <button
+                  type="button"
+                  className="w-fit px-7 py-4 font-bold text-stone-50 rounded-sm bg-orange-400  hover:bg-orange-500"
+                >
+                  Enquire Now
+                </button>
+              }
+              title={"Send Mail us to enquire"}
+              open={open}
+              setOpen={setOpen}
+            >
+              <div className="flex flex-col gap-4">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <fieldset className="flex gap-2 w-full">
+                    <label className="p-5 w-1/4" htmlFor="name">
+                      Name
+                    </label>
+                    <input
+                      className="p-5 w-3/4 border rounded-sm"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
+                  </fieldset>
+                  <fieldset className="flex gap-2">
+                    <label className="p-5 w-1/4" htmlFor="mobile">
+                      Mobile Number
+                    </label>
+                    <input
+                      className="p-5 w-3/4 border rounded-sm"
+                      id="mobile"
+                      name="mobile"
+                      value={formData.mobile}
+                      onChange={handleChange}
+                    />
+                  </fieldset>
+                  <fieldset className="flex gap-2">
+                    <label className="p-5 w-1/4" htmlFor="email">
+                      Email Address
+                    </label>
+                    <input
+                      className="p-5 w-3/4 border rounded-sm"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </fieldset>
+                  <div className="w-full">
+                    <Dropdown
+                      label={service}
+                      options={[
+                        "I am looking for Consulting Service",
+                        "I am looking for Visa Processing",
+                        "I am looking for Study IELTS/PTE",
+                        "Other inquiries",
+                      ]}
+                      onSelect={handleSelect}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      marginTop: 25,
+                      justifyContent: "flex-end",
+                    }}
+                  >
+                    <button onClick={handleSubmit}>Submit</button>
+                  </div>
+                </form>
+              </div>
+            </DialogModal>
+          </div>
+          <p className="font-bold text-3xl">
+            Find Jobs Overseas In one
+            <span className="bg-amber-100 p-1">click</span>
+          </p>
+        </div>
+        <div>
+          <Image
+            src="/world.gif"
+            alt="my logo"
+            width={1250}
+            height={1000}
+            priority
+          />
+        </div>
+      </div>
+
+      <div>
+        <h1 className="font-extrabold text-4xl text-center">
+          Adventure is the best way to learn.
+        </h1>
+        <p className="text-center">Explore Destinations</p>
+      </div>
+
+      <div className="flex">
+        <div className="w-2/3"></div>
+        <div className="w-1/2 px-5">
+          <h1 className="font-bold text-4xl text-center pb-8 flex items-center justify-center">
+            Study In <span className="text-sky-400 px-5 underline underline-offset-8">{` Germany`}</span><Image src="/Germany.gif"
+            alt="Germany Flag"
+            width={100}
+            height={100}
+            priority></Image>
+          </h1>
+          <p className="py-4">
+            If you are thinking about studying in Germany, don’t think twice. It
+            is a super study overseas vacation spot for international students.
+          </p>
+          <div className="flex gap-8 pb-15">
+            <div className="flex flex-col justify-center items-end  rounded-md h-40 w-1/3 bg-orange-100">
+              <p className="text-5xl font-black">400+</p>
+              <p className="font-light">UNIVERSITIES</p>
+            </div>
+            <div className="flex flex-col justify-center items-end  rounded-md h-40 w-1/3 bg-fuchsia-100">
+              <p className="text-5xl font-black">200+</p>
+              <p className="font-light">COURSES</p>
+            </div>
+            <div className="flex flex-col justify-center items-end  rounded-md h-40 w-1/3 bg-teal-50">
+              <p className="text-5xl font-black">3M</p>
+              <p className="font-light">Over 3 Million Students</p>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <button
+              type="button"
+              className="w-fit px-7 py-4 rounded-sm text-white bg-sky-300  hover:bg-sky-400"
+            >
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex gap-10 pl-30 pb-10 pt-10">
+        <div className="w-1/2 px-5">
+          <h1 className="font-bold text-4xl py-4">
+            Now Make Your Abroad Study / Job Search In one Click
+          </h1>
+          <p className="py-4">
+            Choosing to study overseas is one of the most exciting and
+            life-changing commitments you’ll ever make – we’re here to walk you
+            through the process step by step
+          </p>
+
+
+          <div className="flex p-8 mb-8 shadow-md rounded-md">
+            <div className="w-1/4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#73b4b3" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><rect width="16" height="20" x="4" y="2" rx="2"></rect><path d="M16 2v20"></path></svg>
+            </div>
+            <div className="w-3/4">
+              <h1 className="font-bold text-xl">Supportive Counselors</h1>
+              <p className="py-5">
+                You’re not alone. We’re here to make sure you identify and
+                secure the university or college where you can thrive.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex p-8 mb-8 shadow-md rounded-md">
+            <div className="w-1/4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#d48ce1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M15 13a3 3 0 1 0-6 0"></path><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"></path><circle cx="12" cy="8" r="2"></circle></svg>
+            </div>
+            <div className="w-3/4">
+              <h1 className="font-bold text-xl">
+                Carefully Designed Resources
+              </h1>
+              <p className="py-5">
+                Our support does not end when you receive your university
+                acceptance letter.
+              </p>
+            </div>
+          </div>
+
+          <div className="pt-8">
+            <Image
+              src="/think.gif"
+              alt="thinker"
+              width={600}
+              height={250}
+              priority
+            />
+          </div>
+        </div>
+        <div className="w-2/3">
+          <div className="flex justify-center">
+            <Image
+              src="/jumping-partners.gif"
+              alt="jumping-partners"
+              width={600}
+              height={250}
+              priority
+            />
+          </div>
+          <div className="flex p-8 shadow-md rounded-md">
+            <div className="w-1/4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#71b3ed" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M2 21a8 8 0 0 1 10.821-7.487"></path><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path><circle cx="10" cy="8" r="5"></circle></svg>
+            </div>
+            <div className="w-3/4">
+              <h1 className="font-bold text-xl">Job Overseas</h1>
+              <p className="py-5">
+                Get in Touch with our experts to know more about abroad Jobs
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="py-10 bg-sky-100 text-center px-30">
+        <h1 className="font-bold text-4xl">
+          Reimagining what it means to study abroad
+        </h1>
+        <p className="py-5">
+          Going abroad for a degree is a complex process. Rudira brings all the
+          information you need in one place, assists you in the entire process
+          and connects you to alumni and experts for questions, and helps you
+          simplify your study abroad experience.
+        </p>
+        <div className="flex gap-8 py-10">
+          <div className="bg-white rounded-sm px-8 py-10 flex flex-col justify-center items-center">
+            <h1 className="font-bold text-xl">Abroad Admission Guidance</h1>
+            <div>
+              <Image
+                src="/education-blue.gif"
+                alt="education blue"
+                width={300}
+                height={200}
+                priority
+              />
+            </div>
+            <p>
+              We pay close attention to your application, ensuring your required
+              documents are thoroughly compiled and attested
+            </p>
+          </div>
+          <div className="bg-white rounded-sm px-8 py-10 flex flex-col justify-center items-center">
+            <h1 className="font-bold text-xl">Test Preparation</h1>
+            <div>
+              <Image
+                src="/exam-preparation.gif"
+                alt="exam preparation"
+                width={300}
+                height={200}
+                priority
+              />
+            </div>
+            <p>
+              Every student is unique, and we use a mentoring model in which
+              each student receives personalised attention.
+            </p>
+          </div>
+          <div className="bg-white rounded-sm px-8 py-10 flex flex-col justify-center items-center">
+            <h1 className="font-bold text-xl">Career Counselling</h1>
+            <div>
+              <Image
+                src="/career.gif"
+                alt="career"
+                width={300}
+                height={200}
+                priority
+              />
+            </div>
+            <p>
+              We lead you through a maze of questions in order to find solutions
+              that are best suited to your profile.
+            </p>
+          </div>
+        </div>
+        <div className="text-center">
+          <button
+            type="button"
+            className="w-fit px-7 py-4 rounded-sm text-white bg-sky-300  hover:bg-sky-400"
+          >
+            Free Consultation
+          </button>
+        </div>
+      </div>
+
+      <div className="flex px-30 pt-15 gap-10">
+        <div className="w-1/2">
+          <h1 className="font-bold text-4xl">
+            You have a dream. We have a plan.
+          </h1>
+          <p className="py-5">
+            It’s going to be okay. We have been there and we totally get what
+            you’re going through. So we are ready to give you individualized
+            attention to get admits to your dream university. Get started with a
+            free consultation.
+          </p>
+          <div>
+            <Image
+              src="/study.gif"
+              alt="study"
+              width={500}
+              height={250}
+              priority
+            />
+          </div>
+        </div>
+        <div className="w-1/2 flex flex-col gap-8">
+          <div className="flex justify-center items-start p-8 shadow-md rounded-md">
+            <div className="w-1/5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#50a9a5" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg>
+            </div>
+            <div className="w-4/5">
+              <h1 className="font-bold text-xl">Upcoming Events</h1>
+              <p className="py-1">No event found!</p>
+              <button className="text-orange-400 pr-1">Explore</button>
+              <Image
+              className="inline"
+                src="/arrow-2.png"
+                alt="arrow"
+                width={25}
+                height={25}
+              />
+            </div>
+          </div>
+
+          <div className="flex justify-center items-start p-8 shadow-md rounded-md">
+            <div className="w-1/5">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#d48ce1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"></rect><circle cx="12" cy="10" r="3"></circle><path d="M7 21v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"></path></svg>
+            </div>
+            <div className="w-4/5">
+              <h1 className="font-bold text-xl">General Inquiries</h1>
+              <p className="py-1">contact@rudiraconsultancy.com</p>
+              <h4 className="font-semibold text-lg">Partner with us​ / Join us:</h4>
+              <p className="py-1">partner@rudiraconsultancy.com</p>
+              <p><span className="font-bold">Phone:</span> +91 63647 63744</p>
+              <button className="text-orange-400 pr-1">Explore</button>
+              <Image
+              className="inline"
+                src="/arrow-2.png"
+                alt="arrow"
+                width={25}
+                height={25}
+              />
+              
+            </div>
+          </div>
+
+          <div className="flex justify-center items-start p-8 shadow-md rounded-md">
+            <div className="w-1/5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#64a6d9" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8V6Z"></path></svg>
+            </div>
+            <div className="w-4/5">
+              <h1 className="font-bold text-xl">Signup to our newsletter</h1>
+              <fieldset className="flex gap-2 py-2">
+                    <input
+                      className="p-5 w-3/4 rounded-sm bg-sky-100 outline-0"
+                      id="email"
+                      name="email"
+                      placeholder="Enter your email Address"
+                      value={subscribedEmail}
+                      onChange={subscribeNewsLetter}
+                    />
+                    <button className="bg-orange-500 rounded-xl"><ChevronRight className="w-18 h-15 text-white" /></button>
+                  </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
