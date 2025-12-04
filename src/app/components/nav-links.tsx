@@ -30,7 +30,7 @@ export default function NavLinks() {
             className={clsx(
               "flex items-center justify-center gap-2 p-3 text-sm font-medium",
               {
-                "text-orange-600": pathname === link.href,
+                "text-orange-500": pathname === link.href,
               }
             )}
           >

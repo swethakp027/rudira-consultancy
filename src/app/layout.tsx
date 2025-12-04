@@ -30,7 +30,7 @@ export default function RootLayout({
         <Providers>
           <ThemeContextProvider>
             <SessionProvider>
-              <div className="h-24 px-30 py-4">
+              <div className="h-24 px-30 py-4 fixed bg-white w-full z-10">
                 <NavBar />
               </div>
               {children}

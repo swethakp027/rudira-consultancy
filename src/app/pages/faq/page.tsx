@@ -8,18 +8,18 @@ export default function Page() {
       <PageHeader>
         <div className="text-6xl absolute bottom-1 font-bold">FAQ</div>
       </PageHeader>
-      <div className="text-center">
-        <p className="text-4xl font-bold">Frequently Asked Questions</p>
-        <p className="py-6">We can tell you everything about studying abroad</p>
+      <div className="text-center pt-20">
+        <p className="text-4xl font-bold py-6">Frequently Asked Questions</p>
+        <p>We can tell you everything about studying abroad</p>
       </div>
-      <div className="flex">
-        <div>
+      <div className="flex p-30">
+        <div className="w-1/2">
           <div>
-            <p className="font-bold">Study Application</p>
+            <p className="font-bold text-2xl py-6">Study Application</p>
             <Accordion.Root
               type="single"
               collapsible
-              className="w-full max-w-xl mx-auto space-y-2"
+              className="w-full max-w-xl space-y-2"
             >
               <AccordionItem
                 value="item-1"
@@ -87,11 +87,11 @@ export default function Page() {
             </Accordion.Root>
           </div>
           <div>
-            <p className="font-bold">Accommodation</p>
+            <p className="font-bold text-2xl py-6">Accommodation</p>
             <Accordion.Root
               type="single"
               collapsible
-              className="w-full max-w-xl mx-auto space-y-2"
+              className="w-full max-w-xl space-y-2"
             >
               <AccordionItem
                 value="item-1"
@@ -142,12 +142,12 @@ export default function Page() {
             </Accordion.Root>
           </div>
         </div>
-        <div>
-          <p className="font-bold">Visa Application</p>
+        <div className="w-1/2">
+          <p className="font-bold text-2xl py-6">Visa Application</p>
           <Accordion.Root
             type="single"
             collapsible
-            className="w-full max-w-xl mx-auto space-y-2"
+            className="w-full max-w-xl space-y-2"
           >
             <AccordionItem value="item-1" title="Do I need a visa?">
               <div className="flex flex-col gap-5">

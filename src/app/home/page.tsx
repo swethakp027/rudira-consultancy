@@ -6,7 +6,7 @@ import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 
 export default function HomePage() {
-  const [subscribedEmail, setSubscribedEmail] = useState('')
+  const [subscribedEmail, setSubscribedEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [service, setService] = useState("Choose Your Service");
   const [open, setOpen] = useState(false);
@@ -69,9 +69,9 @@ export default function HomePage() {
     }
   };
 
-  const subscribeNewsLetter =()=>{
-    console.log('news letter subscribed')
-  }
+  const subscribeNewsLetter = () => {
+    console.log("news letter subscribed");
+  };
 
   return (
     <>
@@ -89,9 +89,24 @@ export default function HomePage() {
               trigger={
                 <button
                   type="button"
-                  className="w-fit px-7 py-4 font-bold text-stone-50 rounded-sm bg-orange-400  hover:bg-orange-500"
+                  className="flex gap-1 w-fit text-lg px-4 py-5 font-bold text-stone-50 rounded-sm bg-orange-400  hover:bg-orange-500"
                 >
-                  Enquire Now
+                  Enquire Now{` `}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="#fff"
+                    stroke="#fb923c"
+                    strokeWidth="1"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect width="16" height="13" x="6" y="4" rx="2"></rect>
+                    <path d="m22 7-7.1 3.78c-.57.3-1.23.3-1.8 0L6 7"></path>
+                    <path d="M2 8v11c0 1.1.9 2 2 2h14"></path>
+                  </svg>
                 </button>
               }
               title={"Send Mail us to enquire"}
@@ -162,7 +177,7 @@ export default function HomePage() {
             </DialogModal>
           </div>
           <p className="font-bold text-3xl">
-            Find Jobs Overseas In one
+            Find Jobs Overseas In one {` `}
             <span className="bg-amber-100 p-1">click</span>
           </p>
         </div>
@@ -188,11 +203,15 @@ export default function HomePage() {
         <div className="w-2/3"></div>
         <div className="w-1/2 px-5">
           <h1 className="font-bold text-4xl text-center pb-8 flex items-center justify-center">
-            Study In <span className="text-sky-400 px-5 underline underline-offset-8">{` Germany`}</span><Image src="/Germany.gif"
-            alt="Germany Flag"
-            width={100}
-            height={100}
-            priority></Image>
+            Study In {` `}
+            <span className="text-sky-400 px-5 underline underline-offset-8">{`Germany`}</span>
+            <Image
+              src="/Germany.gif"
+              alt="Germany Flag"
+              width={100}
+              height={100}
+              priority
+            ></Image>
           </h1>
           <p className="py-4">
             If you are thinking about studying in Germany, don’t think twice. It
@@ -235,10 +254,26 @@ export default function HomePage() {
             through the process step by step
           </p>
 
-
           <div className="flex p-8 mb-8 shadow-md rounded-md">
             <div className="w-1/4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#73b4b3" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M2 6h4"></path><path d="M2 10h4"></path><path d="M2 14h4"></path><path d="M2 18h4"></path><rect width="16" height="20" x="4" y="2" rx="2"></rect><path d="M16 2v20"></path></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="78"
+                height="78"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#73b4b3"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M2 6h4"></path>
+                <path d="M2 10h4"></path>
+                <path d="M2 14h4"></path>
+                <path d="M2 18h4"></path>
+                <rect width="16" height="20" x="4" y="2" rx="2"></rect>
+                <path d="M16 2v20"></path>
+              </svg>
             </div>
             <div className="w-3/4">
               <h1 className="font-bold text-xl">Supportive Counselors</h1>
@@ -251,7 +286,21 @@ export default function HomePage() {
 
           <div className="flex p-8 mb-8 shadow-md rounded-md">
             <div className="w-1/4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#d48ce1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M15 13a3 3 0 1 0-6 0"></path><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"></path><circle cx="12" cy="8" r="2"></circle></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="78"
+                height="78"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#d48ce1"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M15 13a3 3 0 1 0-6 0"></path>
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"></path>
+                <circle cx="12" cy="8" r="2"></circle>
+              </svg>
             </div>
             <div className="w-3/4">
               <h1 className="font-bold text-xl">
@@ -286,7 +335,21 @@ export default function HomePage() {
           </div>
           <div className="flex p-8 shadow-md rounded-md">
             <div className="w-1/4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#71b3ed" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M2 21a8 8 0 0 1 10.821-7.487"></path><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path><circle cx="10" cy="8" r="5"></circle></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="78"
+                height="78"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#71b3ed"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M2 21a8 8 0 0 1 10.821-7.487"></path>
+                <path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path>
+                <circle cx="10" cy="8" r="5"></circle>
+              </svg>
             </div>
             <div className="w-3/4">
               <h1 className="font-bold text-xl">Job Overseas</h1>
@@ -392,14 +455,35 @@ export default function HomePage() {
         <div className="w-1/2 flex flex-col gap-8">
           <div className="flex justify-center items-start p-8 shadow-md rounded-md">
             <div className="w-1/5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#50a9a5" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="78"
+                height="78"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#50a9a5"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M8 2v4"></path>
+                <path d="M16 2v4"></path>
+                <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                <path d="M3 10h18"></path>
+                <path d="M8 14h.01"></path>
+                <path d="M12 14h.01"></path>
+                <path d="M16 14h.01"></path>
+                <path d="M8 18h.01"></path>
+                <path d="M12 18h.01"></path>
+                <path d="M16 18h.01"></path>
+              </svg>
             </div>
             <div className="w-4/5">
               <h1 className="font-bold text-xl">Upcoming Events</h1>
               <p className="py-1">No event found!</p>
               <button className="text-orange-400 pr-1">Explore</button>
               <Image
-              className="inline"
+                className="inline"
                 src="/arrow-2.png"
                 alt="arrow"
                 width={25}
@@ -410,44 +494,77 @@ export default function HomePage() {
 
           <div className="flex justify-center items-start p-8 shadow-md rounded-md">
             <div className="w-1/5">
-            
-            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#d48ce1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"></rect><circle cx="12" cy="10" r="3"></circle><path d="M7 21v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"></path></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="78"
+                height="78"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#d48ce1"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                <circle cx="12" cy="10" r="3"></circle>
+                <path d="M7 21v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"></path>
+              </svg>
             </div>
             <div className="w-4/5">
               <h1 className="font-bold text-xl">General Inquiries</h1>
               <p className="py-1">contact@rudiraconsultancy.com</p>
-              <h4 className="font-semibold text-lg">Partner with us​ / Join us:</h4>
+              <h4 className="font-semibold text-lg">
+                Partner with us​ / Join us:
+              </h4>
               <p className="py-1">partner@rudiraconsultancy.com</p>
-              <p><span className="font-bold">Phone:</span> +91 63647 63744</p>
+              <p>
+                <span className="font-bold">Phone:</span> +91 63647 63744
+              </p>
               <button className="text-orange-400 pr-1">Explore</button>
               <Image
-              className="inline"
+                className="inline"
                 src="/arrow-2.png"
                 alt="arrow"
                 width={25}
                 height={25}
               />
-              
             </div>
           </div>
 
           <div className="flex justify-center items-start p-8 shadow-md rounded-md">
             <div className="w-1/5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="#64a6d9" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8V6Z"></path></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="78"
+                height="78"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#64a6d9"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path>
+                <path d="M18 14h-8"></path>
+                <path d="M15 18h-5"></path>
+                <path d="M10 6h8v4h-8V6Z"></path>
+              </svg>
             </div>
             <div className="w-4/5">
               <h1 className="font-bold text-xl">Signup to our newsletter</h1>
               <fieldset className="flex gap-2 py-2">
-                    <input
-                      className="p-5 w-3/4 rounded-sm bg-sky-100 outline-0"
-                      id="email"
-                      name="email"
-                      placeholder="Enter your email Address"
-                      value={subscribedEmail}
-                      onChange={subscribeNewsLetter}
-                    />
-                    <button className="bg-orange-500 rounded-xl"><ChevronRight className="w-18 h-15 text-white" /></button>
-                  </fieldset>
+                <input
+                  className="p-5 w-3/4 rounded-sm bg-sky-100 outline-0"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email Address"
+                  value={subscribedEmail}
+                  onChange={subscribeNewsLetter}
+                />
+                <button className="bg-orange-500 rounded-xl">
+                  <ChevronRight className="w-18 h-15 text-white" />
+                </button>
+              </fieldset>
             </div>
           </div>
         </div>

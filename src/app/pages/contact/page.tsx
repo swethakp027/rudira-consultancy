@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CONSTANTS } from "@/app/lib/constants";
@@ -47,102 +47,109 @@ export default function Page() {
 
   return (
     <div>
-    <PageHeader><div className="text-6xl absolute bottom-1 font-bold">Get in touch</div></PageHeader>
-    <div className="flex justify-around px-30 py-5 gap-2">
-    <div className="w-1/2">
-      <p>GET IN TOUCH</p>
-      <div>Visit one of our agency contact us today</div>
-    </div>
-    <div className="bg-white p-8 rounded shadow w-1/2">
-      <h2 className="text-2xl mb-4 text-purple-700">Leave a Message</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="name" className="block font-medium">
-            Name:
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full border-2 border-purple-100 p-2 rounded-md focus:border-purple-200 focus:outline-none"
-          />
+      <PageHeader>
+        <div className="text-6xl absolute bottom-1 font-bold">Get in touch</div>
+      </PageHeader>
+      <div className="flex justify-around p-30 gap-25">
+        <div className="w-1/2 relative">
+          <div className="bg-sky-100 px-15 py-20">
+            <p className="text-emerald-500 font-medium py-4">GET IN TOUCH</p>
+            <h1 className="font-bold text-4xl">
+              Visit one of our agency contact us today
+            </h1>
+          </div>
+          <div className="bg-orange-50 w-140 h-140 rounded-full absolute -top-40 -left-20 -z-1"></div>
         </div>
-        <div>
-          <label htmlFor="email" className="block font-medium">
-            Email:
-          </label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full border-2 border-purple-100 p-2 rounded-md focus:border-purple-200 focus:outline-none"
-          />
+
+        <div className="bg-white w-1/2">
+          <h2 className="text-3xl mb-10 font-bold">Leave A Message</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full p-4 rounded-sm bg-gray-100 focus:outline-none"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-4 rounded-sm bg-gray-100 focus:outline-none"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="Phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full p-4 rounded-sm bg-gray-100 focus:outline-none"
+              />
+            </div>
+            <div className="relative">
+              <input
+                type="text"
+                id="question"
+                name="question"
+                placeholder="Ask AI"
+                value={formData.question}
+                onChange={handleChange}
+                className="w-full p-4 rounded-sm bg-gray-100 focus:outline-none"
+              />
+              <button onClick={generateContent} type="button" className="absolute right-1 top-2.5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="34"
+                  height="34"
+                  viewBox="0 0 24 24"
+                  fill="black"
+                  stroke="#fff"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="m16 12-4-4-4 4"></path>
+                  <path d="M12 16V8"></path>
+                </svg>
+              </button>
+              {generating && (
+                <p className="font-semibold">Generating content...</p>
+              )}
+            </div>
+            <div>
+              <textarea
+                id="comment"
+                name="comment"
+                placeholder="Comment"
+                rows={5}
+                value={formData.comment}
+                onChange={handleChange}
+                className="w-full p-4 rounded-sm bg-gray-100 focus:outline-none"
+              ></textarea>
+            </div>
+            <div className="pt-3">
+              <button
+                type="submit"
+                className="text-white px-12 py-4 rounded-sm bg-orange-400  hover:bg-orange-500"
+              >
+                SEND MESSAGE
+              </button>
+            </div>
+          </form>
         </div>
-        <div>
-          <label htmlFor="phone" className="block font-medium">
-            Phone:
-          </label>
-          <input
-            type="text"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full border-2 border-purple-100 p-2 rounded-md focus:border-purple-200 focus:outline-none"
-          />
-        </div>
-        <div>
-          <label htmlFor="question" className="block font-medium">
-            Question:
-          </label>
-          <input
-            type="text"
-            id="question"
-            name="question"
-            placeholder="ex:top 5 german university"
-            value={formData.question}
-            onChange={handleChange}
-            className="w-full border-2 border-purple-100 p-2 rounded-md focus:border-purple-200 focus:outline-none"
-          />
-        </div>
-        <div>
-          <label htmlFor="comment" className="block font-medium">
-            Comment:
-          </label>
-          <textarea
-            id="comment"
-            name="comment"
-            rows={4}
-            value={formData.comment}
-            onChange={handleChange}
-            className="w-full border-2 border-purple-100 p-2 rounded-md focus:border-purple-200 focus:outline-none"
-          ></textarea>
-          {generating && (
-            <p className="text-purple-700 my-1">Generating content...</p>
-          )}
-          <button
-            onClick={generateContent}
-            type="button"
-            className="text-white px-4 py-2 rounded-md bg-purple-600  hover:bg-purple-700"
-          >
-            Generate Content
-          </button>
-        </div>
-        <div>
-          <button
-            type="submit"
-            className="text-white px-4 py-2 rounded-md bg-purple-600  hover:bg-purple-700"
-          >
-            Send Message
-          </button>
-        </div>
-      </form>
-    </div>
-    </div>
+      </div>
     </div>
   );
 }

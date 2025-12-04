@@ -12,9 +12,9 @@ export default function Page() {
       <div className="text-center pt-30">
         <div className="text-orange-600 font-bold">Fast Process</div>
         <div className="font-bold text-4xl py-4">
-          Start Your Higher Education Journey
+          Start Your Higher Education Journey {` `}
           <span className="text-sky-400 underline underline-offset-8">
-            {` With Rudira`}
+            {`With Rudira`}
           </span>
         </div>
       </div>
@@ -79,10 +79,10 @@ export default function Page() {
       </div>
 
       <div className="bg-sky-100 p-30 mx-15 mt-15">
-        <p className="text-4xl font-bold">
+        <div className="text-4xl font-bold">
           The Comprehensive Guide to Studying Abroad:
           <p>From Application to Arrival.</p>
-        </p>
+        </div>
         <p className="py-4">Making Your Abroad Study Dreams a Reality</p>
 
         <div className="grid grid-cols-4 gap-8">

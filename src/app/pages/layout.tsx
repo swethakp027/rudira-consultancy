@@ -3,7 +3,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="min-h-[calc(100vh-6rem-20rem)]">
+  return <div className="pt-24">
      {children}
     </div>;
 }

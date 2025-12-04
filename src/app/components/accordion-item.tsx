@@ -12,13 +12,13 @@ const AccordionItem = ({
   return (
     <Accordion.Item
       value={value}
-      className="overflow-hidden rounded-xl border bg-white shadow-sm"
+      className="overflow-hidden rounded-sm bg-white shadow-md"
     >
       <Accordion.Header>
         <Accordion.Trigger className="group flex w-full items-center justify-between p-4 text-left text-sm font-medium hover:bg-gray-50 transition-colors">
           {title}
 
-          <ChevronDown className="h-5 w-5 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+          <ChevronDown className="h-5 w-5 text-gray-500 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
         </Accordion.Trigger>
       </Accordion.Header>
 
