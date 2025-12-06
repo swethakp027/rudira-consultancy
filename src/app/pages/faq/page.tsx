@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <div>
       <PageHeader>
-        <div className="text-6xl absolute bottom-1 font-bold">FAQ</div>
+        <div className="text-6xl absolute bottom-1 font-bold z-9">FAQ</div>
       <CircleBox/>
       </PageHeader>
       <div className="relative bg-white">

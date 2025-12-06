@@ -17,7 +17,7 @@ export default function Page() {
   }, []);
   return (
     <div>
-        <PageHeader><div className="text-6xl absolute bottom-1 font-bold">Dashboard</div>
+        <PageHeader><div className="text-6xl absolute bottom-1 font-bold z-9">Dashboard</div>
         {/* <CircleBox/> */}
       </PageHeader>
       <div className="relative bg-white"></div>
