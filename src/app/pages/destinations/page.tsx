@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <div>
       <PageHeader>
-        <div className="text-6xl absolute bottom-1 font-bold">Destinations</div>
+        <div className="text-6xl absolute bottom-1 font-bold z-9">Destinations</div>
       <CircleBox/>
       </PageHeader>
       <div className="relative bg-white text-center p-30">

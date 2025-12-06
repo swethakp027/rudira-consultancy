@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <div>
       <PageHeader bg="#fff">
-        <div className="text-6xl absolute bottom-1 font-bold">
+        <div className="text-6xl absolute bottom-1 font-bold z-9">
           It's Germany!
         </div>
       </PageHeader>

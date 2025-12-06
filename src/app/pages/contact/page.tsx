@@ -49,7 +49,7 @@ export default function Page() {
   return (
     <div>
       <PageHeader>
-        <div className="text-6xl absolute bottom-1 font-bold">Get in touch</div>
+        <div className="text-6xl absolute bottom-1 font-bold z-9">Get in touch</div>
       <CircleBox/>
       </PageHeader>
       <div className="relative bg-white flex justify-around p-30 gap-25">
