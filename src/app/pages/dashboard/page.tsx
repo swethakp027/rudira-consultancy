@@ -1,5 +1,6 @@
 "use client";
 
+import CircleBox from "@/app/components/circle-box";
 import PageHeader from "@/app/components/page-header";
 import { getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -16,7 +17,10 @@ export default function Page() {
   }, []);
   return (
     <div>
-        <PageHeader><div className="text-6xl absolute bottom-1 font-bold">Dashboard</div></PageHeader>
+        <PageHeader><div className="text-6xl absolute bottom-1 font-bold">Dashboard</div>
+        {/* <CircleBox/> */}
+      </PageHeader>
+      <div className="relative bg-white"></div>
     </div>
   );
 }

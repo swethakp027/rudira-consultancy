@@ -1,4 +1,5 @@
 import AccordionItem from "@/app/components/accordion-item";
+import CircleBox from "@/app/components/circle-box";
 import PageHeader from "@/app/components/page-header";
 import * as Accordion from "@radix-ui/react-accordion";
 
@@ -7,7 +8,9 @@ export default function Page() {
     <div>
       <PageHeader>
         <div className="text-6xl absolute bottom-1 font-bold">FAQ</div>
+      <CircleBox/>
       </PageHeader>
+      <div className="relative bg-white">
       <div className="text-center pt-20">
         <p className="text-4xl font-bold py-6">Frequently Asked Questions</p>
         <p>We can tell you everything about studying abroad</p>
@@ -474,6 +477,7 @@ export default function Page() {
             </AccordionItem>
           </Accordion.Root>
         </div>
+      </div>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 "use client";
+import CircleBox from "@/app/components/circle-box";
 import PageHeader from "@/app/components/page-header";
+import SendMail from "@/app/components/send-mail";
 import ShowMoreText from "@/app/components/show-more-text";
 import Image from "next/image";
 
@@ -8,7 +10,9 @@ export default function Page() {
     <div>
       <PageHeader>
         <div className="text-6xl absolute bottom-1 font-bold">Services</div>
+        <CircleBox/>
       </PageHeader>
+      <div className="relative bg-white">
       <div className="text-center pt-30">
         <div className="text-orange-600 font-bold">Fast Process</div>
         <div className="font-bold text-4xl py-4">
@@ -69,12 +73,14 @@ export default function Page() {
           />
         </div>
         <div className="text-center">
-          <button
-            type="button"
-            className="w-fit px-7 py-4 rounded-sm bg-sky-400  hover:bg-sky-500"
-          >
-            Enquire Now
-          </button>
+          <SendMail>
+            <button
+              type="button"
+              className="w-fit px-7 py-4 rounded-sm bg-sky-400  hover:bg-sky-500"
+            >
+              Enquire Now
+            </button>
+          </SendMail>
         </div>
       </div>
 
@@ -194,7 +200,9 @@ export default function Page() {
       </div>
 
       <div className="bg-sky-100 p-30 text-center">
-        <h1 className="font-bold text-4xl py-4">Job Overseas Start your Dream Job Now</h1>
+        <h1 className="font-bold text-4xl py-4">
+          Job Overseas Start your Dream Job Now
+        </h1>
         <p className="py-4 pb-10">
           Job opportunities overseas can be exciting and challenging. Working
           abroad offers the chance to gain new skills, experience different
@@ -209,14 +217,17 @@ export default function Page() {
           and life-changing experience.
         </p>
         <div className="text-center">
+          <SendMail>
             <button
               type="button"
               className="w-fit px-7 py-4 rounded-sm text-white bg-sky-300  hover:bg-sky-400"
             >
               Enquire Now
             </button>
-          </div>
+          </SendMail>
+        </div>
       </div>
+    </div>
     </div>
   );
 }

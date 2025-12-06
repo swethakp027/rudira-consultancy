@@ -1,3 +1,4 @@
+import CircleBox from "@/app/components/circle-box";
 import PageHeader from "@/app/components/page-header";
 import Image from "next/image";
 
@@ -6,7 +7,9 @@ export default function Page() {
     <div>
       <PageHeader>
         <div className="text-6xl absolute bottom-1 font-bold">About us</div>
+      <CircleBox/>
       </PageHeader>
+      <div className="relative bg-white">
       <div className="flex px-30 items-center">
         <div className="w-1/2">
           <h1 className="font-bold text-4xl py-2">About Us</h1>
@@ -149,6 +152,7 @@ export default function Page() {
             priority
           />
         </div>
+      </div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CONSTANTS } from "@/app/lib/constants";
 import PageHeader from "@/app/components/page-header";
+import CircleBox from "@/app/components/circle-box";
 
 export default function Page() {
   const router = useRouter();
@@ -49,8 +50,9 @@ export default function Page() {
     <div>
       <PageHeader>
         <div className="text-6xl absolute bottom-1 font-bold">Get in touch</div>
+      <CircleBox/>
       </PageHeader>
-      <div className="flex justify-around p-30 gap-25">
+      <div className="relative bg-white flex justify-around p-30 gap-25">
         <div className="w-1/2 relative">
           <div className="bg-sky-100 px-15 py-20">
             <p className="text-emerald-500 font-medium py-4">GET IN TOUCH</p>

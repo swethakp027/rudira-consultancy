@@ -32,7 +32,7 @@ export default async function UserButton() {
         <div>
           <h3 className="font-semibold mb-1">{session.user.name}</h3>
           <p className="text-sm text-gray-600 pb-5">{session.user.email}</p>
-          <div className="mb-5"><ToggleGroups/></div>
+          {/* <div className="mb-5"><ToggleGroups/></div> */}
           <hr />
           <SignOut />
         </div>

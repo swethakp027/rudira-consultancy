@@ -1,8 +1,12 @@
 "use client"
 import styled from "styled-components";
 
-const PageHeader = styled.div`
-  background-color: #d7f0fd;
+interface BoxProps {
+  bg?: string;
+}
+
+const PageHeader = styled.div<BoxProps>`
+  background-color: ${(props:any) => (props.bg || "#d7f0fd")};
   height:250px;
   position:relative;
   padding:0 120px;

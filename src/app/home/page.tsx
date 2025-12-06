@@ -1,73 +1,12 @@
 "use client";
 import Image from "next/image";
-import DialogModal from "../components/dialog";
-import Dropdown from "../components/dropdown";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ChevronRight } from "lucide-react";
+import WorldMap from "../components/world-map";
+import SendMail from "../components/send-mail";
 
 export default function HomePage() {
   const [subscribedEmail, setSubscribedEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [service, setService] = useState("Choose Your Service");
-  const [open, setOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    mobile: "",
-    service: "",
-  });
-
-  const handleSelect = (value: string) => {
-    setService(value);
-    setFormData((prevData) => ({
-      ...prevData,
-      service: value,
-    }));
-  };
-
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log(formData);
-    sendEmail(e);
-  };
-
-  const sendEmail = async (e: any) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const res = await fetch("/api/send", {
-      method: "POST",
-      body: JSON.stringify({
-        subject: "User contacted",
-        message: formData,
-      }),
-    });
-
-    const data = await res.json();
-    setLoading(false);
-
-    if (data.success) {
-      console.log("Email sent successfully!");
-      setFormData({
-        name: "",
-        email: "",
-        mobile: "",
-        service: "",
-      });
-      setService("Choose Your Service");
-      setOpen(false);
-    } else {
-      console.log("Failed to send email.");
-    }
-  };
 
   const subscribeNewsLetter = () => {
     console.log("news letter subscribed");
@@ -85,96 +24,29 @@ export default function HomePage() {
           </p>
           <p className="font-bold text-3xl">Planning to Study Abroad ?</p>
           <div className="py-5">
-            <DialogModal
-              trigger={
-                <button
-                  type="button"
-                  className="flex gap-1 w-fit text-lg px-4 py-5 font-bold text-stone-50 rounded-sm bg-orange-400  hover:bg-orange-500"
+            <SendMail>
+              <button
+                type="button"
+                className="flex gap-1 w-fit text-lg px-4 py-5 font-bold text-stone-50 rounded-sm bg-orange-400  hover:bg-orange-500"
+              >
+                Enquire Now{` `}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 24 24"
+                  fill="#fff"
+                  stroke="#fb923c"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                  Enquire Now{` `}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    viewBox="0 0 24 24"
-                    fill="#fff"
-                    stroke="#fb923c"
-                    strokeWidth="1"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect width="16" height="13" x="6" y="4" rx="2"></rect>
-                    <path d="m22 7-7.1 3.78c-.57.3-1.23.3-1.8 0L6 7"></path>
-                    <path d="M2 8v11c0 1.1.9 2 2 2h14"></path>
-                  </svg>
-                </button>
-              }
-              title={"Send Mail us to enquire"}
-              open={open}
-              setOpen={setOpen}
-            >
-              <div className="flex flex-col gap-4">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <fieldset className="flex gap-2 w-full">
-                    <label className="p-5 w-1/4" htmlFor="name">
-                      Name
-                    </label>
-                    <input
-                      className="p-5 w-3/4 border rounded-sm"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                    />
-                  </fieldset>
-                  <fieldset className="flex gap-2">
-                    <label className="p-5 w-1/4" htmlFor="mobile">
-                      Mobile Number
-                    </label>
-                    <input
-                      className="p-5 w-3/4 border rounded-sm"
-                      id="mobile"
-                      name="mobile"
-                      value={formData.mobile}
-                      onChange={handleChange}
-                    />
-                  </fieldset>
-                  <fieldset className="flex gap-2">
-                    <label className="p-5 w-1/4" htmlFor="email">
-                      Email Address
-                    </label>
-                    <input
-                      className="p-5 w-3/4 border rounded-sm"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </fieldset>
-                  <div className="w-full">
-                    <Dropdown
-                      label={service}
-                      options={[
-                        "I am looking for Consulting Service",
-                        "I am looking for Visa Processing",
-                        "I am looking for Study IELTS/PTE",
-                        "Other inquiries",
-                      ]}
-                      onSelect={handleSelect}
-                    />
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      marginTop: 25,
-                      justifyContent: "flex-end",
-                    }}
-                  >
-                    <button onClick={handleSubmit}>Submit</button>
-                  </div>
-                </form>
-              </div>
-            </DialogModal>
+                  <rect width="16" height="13" x="6" y="4" rx="2"></rect>
+                  <path d="m22 7-7.1 3.78c-.57.3-1.23.3-1.8 0L6 7"></path>
+                  <path d="M2 8v11c0 1.1.9 2 2 2h14"></path>
+                </svg>
+              </button>
+            </SendMail>
           </div>
           <p className="font-bold text-3xl">
             Find Jobs Overseas In one {` `}
@@ -199,8 +71,10 @@ export default function HomePage() {
         <p className="text-center">Explore Destinations</p>
       </div>
 
-      <div className="flex">
-        <div className="w-2/3"></div>
+      <div className="flex gap-10">
+        <div className="w-2/3">
+          <WorldMap />
+        </div>
         <div className="w-1/2 px-5">
           <h1 className="font-bold text-4xl text-center pb-8 flex items-center justify-center">
             Study In {` `}

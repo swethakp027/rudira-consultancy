@@ -1,3 +1,4 @@
+import CircleBox from "@/app/components/circle-box";
 import PageHeader from "@/app/components/page-header";
 import Image from "next/image";
 
@@ -6,8 +7,9 @@ export default function Page() {
     <div>
       <PageHeader>
         <div className="text-6xl absolute bottom-1 font-bold">Destinations</div>
+      <CircleBox/>
       </PageHeader>
-      <div className="text-center p-30">
+      <div className="relative bg-white text-center p-30">
         <div className="text-4xl font-bold">Countries</div>
         <p className="py-6">
           A destination is never a place but a new way of seeing things. Explore

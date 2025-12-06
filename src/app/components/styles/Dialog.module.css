@@ -25,13 +25,11 @@
 .Title {
 	margin: 0;
 	font-weight: 500;
-	color: oklch(27.8% 0.033 256.848);
-	font-size: 17px;
+	font-size: 24px;
 }
 
 .Description {
 	margin: 10px 0 20px;
-	color: oklch(37.3% 0.034 259.733);
 	font-size: 15px;
 	line-height: 1.5;
 }
@@ -67,18 +65,9 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	color: var(--violet-11);
 	position: absolute;
-	top: 10px;
-	right: 10px;
-	background-color: var(--gray-3);
-	&:hover {
-		background-color: var(--violet-4);
-	}
-
-	&:focus {
-		box-shadow: 0 0 0 2px var(--violet-7);
-	}
+	top: 30px;
+	right: 30px;
 }
 
 @keyframes overlayShow {
