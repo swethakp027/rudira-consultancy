@@ -15,8 +15,8 @@ export default function Page() {
         <p className="text-4xl font-bold py-6">Frequently Asked Questions</p>
         <p>We can tell you everything about studying abroad</p>
       </div>
-      <div className="flex p-30">
-        <div className="w-1/2">
+      <div className="p-30 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+        <div className="">
           <div>
             <p className="font-bold text-2xl py-6">Study Application</p>
             <Accordion.Root
@@ -145,7 +145,7 @@ export default function Page() {
             </Accordion.Root>
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="">
           <p className="font-bold text-2xl py-6">Visa Application</p>
           <Accordion.Root
             type="single"

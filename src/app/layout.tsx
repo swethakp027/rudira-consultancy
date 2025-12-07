@@ -5,13 +5,12 @@ import Footer from "./components/footer";
 import { SessionProvider } from "next-auth/react";
 import { ThemeContextProvider } from "./context/ThemeContext";
 import { Providers } from "./providers";
-import { Noto_Sans } from "next/font/google";
- 
-const notoSans = Noto_Sans({
-  subsets: ["latin"],          // required, e.g., latin, latin-ext
-  weight: ["400", "700"],      // optional: normal 400, bold 700
-  style: ["normal", "italic"], // optional
-  variable: "--font-noto-sans", // optional CSS variable
+import { Outfit } from "next/font/google";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "600", "700", "800", "900"], // choose what you need
+  variable: "--font-outfit", // optional CSS variable
 });
 
 export const metadata: Metadata = {
@@ -25,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={notoSans.variable}>
+    <html lang="en" className={outfit.variable}>
       <body className="min-h-screen flex flex-col">
         <Providers>
           <ThemeContextProvider>
@@ -33,8 +32,8 @@ export default function RootLayout({
               <div className="h-24 px-30 py-4 fixed bg-white w-full z-10">
                 <NavBar />
               </div>
-              {children}
-              <div className="px-30 py-3 bg-zinc-50">
+              <div className="pt-24">{children}</div>
+              <div className="px-30 py-3 mt-5 bg-zinc-50">
                 <Footer />
               </div>
             </SessionProvider>

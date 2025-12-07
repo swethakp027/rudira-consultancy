@@ -18,7 +18,7 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="flex pl-30 items-center">
+      <div className="pl-30 items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
         <div className="w-230">
           <h1 className="text-4xl font-black">
             We help build your dream career
@@ -75,11 +75,11 @@ export default function HomePage() {
         <p className="text-center">Explore Destinations</p>
       </div>
 
-      <div className="flex gap-10">
-        <div className="w-2/3">
+      <div className="gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+        <div className="">
           <WorldMap />
         </div>
-        <div className="w-1/2 px-5">
+        <div className="px-5">
           <h1 className="font-bold text-4xl text-center pb-8 flex items-center justify-center">
             Study In {` `}
             <span className="text-sky-400 px-5 underline underline-offset-8">{`Germany`}</span>
@@ -121,8 +121,8 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="flex gap-10 pl-30 pb-10 pt-10">
-        <div className="w-1/2 px-5">
+      <div className="gap-10 pl-30 pb-10 pt-10 items-end grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+        <div className="px-5">
           <h1 className="font-bold text-4xl py-4">
             Now Make Your Abroad Study / Job Search In one Click
           </h1>
@@ -201,11 +201,35 @@ export default function HomePage() {
             />
           </div>
         </div>
-        <div className="w-2/3">
-          <div className="flex justify-center">
+        <div className="">
+          <div className="relative py-8 h-200">
+            <div
+              style={{
+                position: "absolute",
+                left: "-30px",
+                top: "-90px",
+                width: "434px",
+                height: "434px",
+                borderRadius: "50%",
+                display: "inline-block",
+                backgroundColor: "#e7f9f3",
+              }}
+            ></div>
+            <div
+              style={{
+                position: "absolute",
+                right: "-40px",
+                top: "120px",
+                width: "560px",
+                height: "650px",
+                display: "inline-block",
+                backgroundColor: "#fbf7d8",
+              }}
+            ></div>
             <Image
               src="/jumping-partners.gif"
               alt="jumping-partners"
+              className="relative z-5 left-10"
               width={600}
               height={250}
               priority
@@ -249,7 +273,7 @@ export default function HomePage() {
           and connects you to alumni and experts for questions, and helps you
           simplify your study abroad experience.
         </p>
-        <div className="flex gap-8 py-10">
+        <div className="gap-8 py-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
           <div className="bg-white rounded-sm px-8 py-10 flex flex-col justify-center items-center">
             <h1 className="font-bold text-xl">Abroad Admission Guidance</h1>
             <div>
@@ -309,8 +333,8 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="flex px-30 pt-15 gap-10">
-        <div className="w-1/2">
+      <div className="px-30 pt-15 gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+        <div className="">
           <h1 className="font-bold text-4xl">
             You have a dream. We have a plan.
           </h1>
@@ -330,7 +354,7 @@ export default function HomePage() {
             />
           </div>
         </div>
-        <div className="w-1/2 flex flex-col gap-8">
+        <div className=" flex flex-col gap-8">
           <div className="flex justify-center items-start p-8 shadow-md rounded-md">
             <div className="w-1/5">
               <svg

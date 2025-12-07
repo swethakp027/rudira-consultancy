@@ -91,7 +91,7 @@ export default function Page() {
         </div>
         <p className="py-4">Making Your Abroad Study Dreams a Reality</p>
 
-        <div className="grid grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="p-8 bg-white rounded-md">
             <h1 className="font-bold text-2xl py-4">Selection of course</h1>
             <ShowMoreText

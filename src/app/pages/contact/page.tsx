@@ -52,18 +52,18 @@ export default function Page() {
         <div className="text-6xl absolute bottom-1 font-bold z-9">Get in touch</div>
       <CircleBox/>
       </PageHeader>
-      <div className="relative bg-white flex justify-around p-30 gap-25">
-        <div className="w-1/2 relative">
-          <div className="bg-sky-100 px-15 py-20">
+      <div className="relative bg-white justify-around p-30 gap-25 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+        <div className="relative">
+          <div className="bg-sky-100 px-15 py-20 relative z-2">
             <p className="text-emerald-500 font-medium py-4">GET IN TOUCH</p>
             <h1 className="font-bold text-4xl">
               Visit one of our agency contact us today
             </h1>
           </div>
-          <div className="bg-orange-50 w-140 h-140 rounded-full absolute -top-40 -left-20 -z-1"></div>
+          <div className="bg-orange-50 w-140 h-140 rounded-full absolute -top-40 -left-20"></div>
         </div>
 
-        <div className="bg-white w-1/2">
+        <div className="bg-white">
           <h2 className="text-3xl mb-10 font-bold">Leave A Message</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>

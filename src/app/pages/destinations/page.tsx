@@ -16,10 +16,10 @@ export default function Page() {
           universities, courses, and campuses around the world without leaving
           home.
         </p>
-        <div className="grid grid-cols-2 gap-12 pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 pt-4">
           <div className="flex flex-col bg-amber-50">
             <Image
-                      src="/Germany.jpeg"
+                      src="/germany.jpeg"
                       alt="Germany"
                       className="h-full"
                       width={700}

@@ -10,8 +10,8 @@ export default function Page() {
       <CircleBox/>
       </PageHeader>
       <div className="relative bg-white">
-      <div className="flex px-30 items-center">
-        <div className="w-1/2">
+      <div className="px-30 items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+        <div className="">
           <h1 className="font-bold text-4xl py-2">About Us</h1>
           <p className="py-4">
             Rudira Consultancy Private Limited is one of the leading Immigration
@@ -35,7 +35,7 @@ export default function Page() {
             Singapore, Ireland, France, Malaysia, Netherland, and many more.
           </p>
         </div>
-        <div className="w-1/2">
+        <div className="">
           <Image
             src="/about-us.gif"
             alt="about us"
@@ -46,14 +46,14 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex justify-end pr-8">
-        <div className="w-1/2 flex p-6 bg-orange-500 rounded-md text-white font-bold text-4xl">
+      <div className="flex justify-baseline md:justify-end lg:justify-end px-30 ">
+        <div className="w-full md:w-1/2 lg:w-1/2 flex p-6 bg-orange-500 rounded-md text-white font-bold text-4xl">
           "Follow your dreams. They know the way."
         </div>
       </div>
 
-      <div className="flex gap-20">
-        <div className="pl-30 w-2/5">
+      <div className="gap-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+        <div className="pl-30">
           <div>
             <h1 className="font-bold text-4xl py-4">Our Mission</h1>
             <p className="py-3">
@@ -104,7 +104,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="w-3/5">
+        <div className="">
           <Image
             src="/analytical-thinking-illustration.gif"
             alt="analytical thinking illustration"
@@ -133,8 +133,8 @@ export default function Page() {
         </p>
       </div>
 
-      <div className="flex px-30 gap-20 items-center">
-        <div className="w-2/5">
+      <div className="px-30 gap-20 items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+        <div className="">
         <h1 className="font-bold text-4xl">You Have A Dream. We Have A Plan.</h1>
         <p>
           It’s going to be okay. We have been there and we totally get what
@@ -143,7 +143,7 @@ export default function Page() {
           free consultation.
         </p>
         </div>
-        <div className="w-3/5">
+        <div className="">
         <Image
             src="/dreamy-network.gif"
             alt="dreamy network"
