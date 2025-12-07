@@ -19,7 +19,7 @@ export default function WorldMap() {
         {({ geographies }: { geographies: any }) =>
           geographies.map((geo: any) => (
             <Geography
-              key={geo.rsmKey}
+              key={geo.properties.name}
               geography={geo}
               style={{
                 default: { fill: "#E0E0E0" },
