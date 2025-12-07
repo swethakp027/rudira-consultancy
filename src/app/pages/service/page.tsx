@@ -159,8 +159,8 @@ export default function Page() {
         <h1 className="font-bold text-4xl py-4">
           How do we help? (How we work)
         </h1>
-        <div className="flex gap-10">
-          <div className="w-1/2">
+        <div className="flex flex-col md:flex-row lg:flex-row gap-10">
+          <div className="w-full md:w-1/2 lg:w-1/2">
             <h1 className="font-bold text-2xl py-4">Pre Admission</h1>
             <div className="flex flex-col gap-4">
               <p>
@@ -175,7 +175,7 @@ export default function Page() {
               <p>Apply to right University and Course that meets your needs.</p>
             </div>
           </div>
-          <div className="w-1/2">
+          <div className="w-full md:w-1/2 lg:w-1/2">
             <h1 className="font-bold text-2xl py-4">Post Admission</h1>
             <div className="flex flex-col gap-4">
               <p>

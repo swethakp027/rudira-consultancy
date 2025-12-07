@@ -19,7 +19,7 @@ export default function HomePage() {
   return (
     <>
       <div className="pl-30 items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-        <div className="w-230">
+        <div className="">
           <h1 className="text-4xl font-black">
             We help build your dream career
           </h1>
@@ -132,8 +132,8 @@ export default function HomePage() {
             through the process step by step
           </p>
 
-          <div className="flex p-8 mb-8 shadow-md rounded-md">
-            <div className="w-1/4">
+          <div className="flex p-8 mb-8 shadow-md rounded-md flex-col md:flex-row md:items-start lg:flex-row justify-center lg:items-start">
+            <div className="w-full md:w-1/4 lg:w-1/4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="78"
@@ -153,7 +153,7 @@ export default function HomePage() {
                 <path d="M16 2v20"></path>
               </svg>
             </div>
-            <div className="w-3/4">
+            <div className="w-full md:w-3/4 lg:w-3/4">
               <h1 className="font-bold text-xl">Supportive Counselors</h1>
               <p className="py-5">
                 You’re not alone. We’re here to make sure you identify and
@@ -162,8 +162,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex p-8 mb-8 shadow-md rounded-md">
-            <div className="w-1/4">
+          <div className="flex p-8 mb-8 shadow-md rounded-md flex-col md:flex-row md:items-start lg:flex-row justify-center lg:items-start">
+            <div className="w-full md:w-1/4 lg:w-1/4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="78"
@@ -180,7 +180,7 @@ export default function HomePage() {
                 <circle cx="12" cy="8" r="2"></circle>
               </svg>
             </div>
-            <div className="w-3/4">
+            <div className="w-full md:w-3/4 lg:w-3/4">
               <h1 className="font-bold text-xl">
                 Carefully Designed Resources
               </h1>
@@ -201,35 +201,11 @@ export default function HomePage() {
             />
           </div>
         </div>
-        <div className="">
-          <div className="relative py-8 h-200">
-            <div
-              style={{
-                position: "absolute",
-                left: "-30px",
-                top: "-90px",
-                width: "434px",
-                height: "434px",
-                borderRadius: "50%",
-                display: "inline-block",
-                backgroundColor: "#e7f9f3",
-              }}
-            ></div>
-            <div
-              style={{
-                position: "absolute",
-                right: "-40px",
-                top: "120px",
-                width: "560px",
-                height: "650px",
-                display: "inline-block",
-                backgroundColor: "#fbf7d8",
-              }}
-            ></div>
+        <div className="flex flex-col gap-20">
+          <div className="relative py-8 h-180 bg-orange-50">
             <Image
               src="/jumping-partners.gif"
               alt="jumping-partners"
-              className="relative z-5 left-10"
               width={600}
               height={250}
               priority
@@ -355,8 +331,8 @@ export default function HomePage() {
           </div>
         </div>
         <div className=" flex flex-col gap-8">
-          <div className="flex justify-center items-start p-8 shadow-md rounded-md">
-            <div className="w-1/5">
+          <div className="flex flex-col md:flex-row md:items-start lg:flex-row justify-center lg:items-start p-8 shadow-md rounded-md">
+            <div className="w-full md:w-1/5 lg:w-1/5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="78"
@@ -380,7 +356,7 @@ export default function HomePage() {
                 <path d="M16 18h.01"></path>
               </svg>
             </div>
-            <div className="w-4/5">
+            <div className="w-full md:w-4/5 lg:w-4/5">
               <h1 className="font-bold text-xl">Upcoming Events</h1>
               <p className="py-1">No event found!</p>
               <button className="text-orange-400 pr-1">Explore</button>
@@ -394,8 +370,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex justify-center items-start p-8 shadow-md rounded-md">
-            <div className="w-1/5">
+          <div className="flex flex-col md:flex-row lg:flex-row justify-center md:items-start lg:items-start p-8 shadow-md rounded-md">
+            <div className="w-full md:w-1/5 lg:w-1/5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="78"
@@ -412,7 +388,7 @@ export default function HomePage() {
                 <path d="M7 21v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"></path>
               </svg>
             </div>
-            <div className="w-4/5">
+            <div className="w-full md:w-4/5 lg:w-4/5">
               <h1 className="font-bold text-xl">General Inquiries</h1>
               <p className="py-1">contact@rudiraconsultancy.com</p>
               <h4 className="font-semibold text-lg">
@@ -433,8 +409,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex justify-center items-start p-8 shadow-md rounded-md">
-            <div className="w-1/5">
+          <div className="flex flex-col md:flex-row lg:flex-row justify-center md:items-start lg:items-start p-8 shadow-md rounded-md">
+            <div className="w-full md:w-1/5 lg:w-1/5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="78"
@@ -452,7 +428,7 @@ export default function HomePage() {
                 <path d="M10 6h8v4h-8V6Z"></path>
               </svg>
             </div>
-            <div className="w-4/5">
+            <div className="w-full md:w-4/5 lg:w-4/5">
               <h1 className="font-bold text-xl">Signup to our newsletter</h1>
               <fieldset className="flex gap-2 py-2">
                 <input

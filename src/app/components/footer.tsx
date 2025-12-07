@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
       </div>
       <hr className="text-gray-200"/>
-      <div className="flex justify-items-start gap-75 py-10">
+      <div className="flex flex-col md:flex-row lg:flex-row justify-items-start gap-20 md:gap-75 lg:gap-75 py-10">
         <div>
           <div className="text-xl font-bold">Get In Touch</div>
           <div className="py-3">
