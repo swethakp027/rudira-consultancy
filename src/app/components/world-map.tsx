@@ -1,11 +1,21 @@
 "use client";
 
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import { ComposableMap, Geographies, Geography } from "@vnedyalk0v/react19-simple-maps";
+import { useState, useEffect } from "react";
 
 export default function WorldMap() {
+   const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch("/world-110m.json")
+      .then((res) => res.json())
+      .then((d) => setData(d));
+  }, []);
+
+  if (!data) return <p>Loading map...</p>;
   return (
     <ComposableMap>
-      <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
+      <Geographies geography={data}>
         {({ geographies }: { geographies: any }) =>
           geographies.map((geo: any) => (
             <Geography

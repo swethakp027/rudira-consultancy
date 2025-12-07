@@ -1,9 +1,13 @@
 "use client";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { ChevronRight } from "lucide-react";
-import WorldMap from "../components/world-map";
 import SendMail from "../components/send-mail";
+import dynamic from "next/dynamic";
+
+const WorldMap = dynamic(() => import("../components/world-map"), {
+  ssr: false,
+});
 
 export default function HomePage() {
   const [subscribedEmail, setSubscribedEmail] = useState("");
