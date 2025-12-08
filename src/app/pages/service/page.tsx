@@ -1,13 +1,17 @@
 "use client";
 import CircleBox from "@/app/components/circle-box";
+import { useToast } from "@/app/components/custom-hooks/use-toast";
 import PageHeader from "@/app/components/page-header";
 import SendMail from "@/app/components/send-mail";
 import ShowMoreText from "@/app/components/show-more-text";
 import Image from "next/image";
 
 export default function Page() {
+    const { showToast, ToastComponent } = useToast();
+  
   return (
     <div>
+      <ToastComponent/>
       <PageHeader>
         <div className="text-6xl absolute bottom-1 font-bold z-9">Services</div>
         <CircleBox/>
@@ -73,7 +77,7 @@ export default function Page() {
           />
         </div>
         <div className="text-center">
-          <SendMail>
+          <SendMail onSuccessMail={(e:any)=>showToast("Mail Sent Sucessfully!!")}>
             <button
               type="button"
               className="w-fit px-7 py-4 rounded-sm bg-sky-400  hover:bg-sky-500"
@@ -217,7 +221,7 @@ export default function Page() {
           and life-changing experience.
         </p>
         <div className="text-center">
-          <SendMail>
+          <SendMail onSuccessMail={(e:any)=>showToast("Mail Sent Sucessfully!!")}>
             <button
               type="button"
               className="w-fit px-7 py-4 rounded-sm text-white bg-sky-300  hover:bg-sky-400"

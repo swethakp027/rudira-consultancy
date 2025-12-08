@@ -40,7 +40,7 @@ export default function HomePage() {
           </p>
           <p className="font-bold text-3xl">Planning to Study Abroad ?</p>
           <div className="py-5">
-            <SendMail onSuccessMail={(e:any)=>showToast("Main Sent Sucessfully!!")}>
+            <SendMail onSuccessMail={(e:any)=>showToast("Mail Sent Sucessfully!!")}>
               <button
                 type="button"
                 className="flex gap-1 w-fit text-lg px-4 py-5 font-bold text-stone-50 rounded-sm bg-orange-400  hover:bg-orange-500"

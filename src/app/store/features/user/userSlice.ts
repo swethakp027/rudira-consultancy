@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
-export interface UserState { name: string; loggedIn: boolean }
-const initialState: UserState = { name: "", loggedIn: false };
+export interface UserState { name: string; loggedIn: boolean, toastMessage:string }
+const initialState: UserState = { name: "", loggedIn: false, toastMessage:"" };
 
 export const userSlice = createSlice({
   name: "user",
