@@ -2,7 +2,7 @@ import { useState, useRef, ReactNode } from "react";
 import DialogModal from "./dialog";
 import Dropdown from "./dropdown";
 
-export default function SendMail({ children }: { children: ReactNode }) {
+export default function SendMail({ children, onSuccessMail }: { children: ReactNode,onSuccessMail:any }) {
   const [loading, setLoading] = useState(false);
   const [service, setService] = useState("Choose Your Service");
   const [open, setOpen] = useState(false);
@@ -46,6 +46,9 @@ export default function SendMail({ children }: { children: ReactNode }) {
     } else {
       sendEmail(e);
       setShowErrorText(false);
+      setTimeout(() => {
+        onSuccessMail();
+      }, 0);
     }
   };
 

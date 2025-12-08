@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 import SendMail from "../components/send-mail";
 import dynamic from "next/dynamic";
+import { useToast } from "../components/custom-hooks/use-toast";
 
 const WorldMap = dynamic(() => import("../components/world-map"), {
   ssr: false,
@@ -11,13 +12,24 @@ const WorldMap = dynamic(() => import("../components/world-map"), {
 
 export default function HomePage() {
   const [subscribedEmail, setSubscribedEmail] = useState("");
+  const { showToast, ToastComponent } = useToast();
 
-  const subscribeNewsLetter = () => {
-    console.log("news letter subscribed");
+  const subscribeNewsLetter = async() => {
+    const res = await fetch("/api/subscribedNewsLetterUsersMailIds", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userEmail:subscribedEmail, date:new Date().toISOString() }),
+    });
+    const data = await res.json();
+    if(data.success){
+      setSubscribedEmail("");
+      showToast("Subscribed to News Letter!!")
+    }
   };
 
   return (
     <>
+    <ToastComponent />
       <div className="pl-30 items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
         <div className="">
           <h1 className="text-4xl font-black">
@@ -28,7 +40,7 @@ export default function HomePage() {
           </p>
           <p className="font-bold text-3xl">Planning to Study Abroad ?</p>
           <div className="py-5">
-            <SendMail>
+            <SendMail onSuccessMail={(e:any)=>showToast("Main Sent Sucessfully!!")}>
               <button
                 type="button"
                 className="flex gap-1 w-fit text-lg px-4 py-5 font-bold text-stone-50 rounded-sm bg-orange-400  hover:bg-orange-500"
@@ -433,13 +445,13 @@ export default function HomePage() {
               <fieldset className="flex gap-2 py-2">
                 <input
                   className="p-5 w-3/4 rounded-sm bg-sky-100 outline-0"
-                  id="email"
                   name="email"
+                  type="text"
                   placeholder="Enter your email Address"
                   value={subscribedEmail}
-                  onChange={subscribeNewsLetter}
+                  onChange={(e) => setSubscribedEmail(e.target.value)}
                 />
-                <button className="bg-orange-500 rounded-xl">
+                <button className="bg-orange-500 rounded-xl" onClick={subscribeNewsLetter}>
                   <ChevronRight className="w-18 h-15 text-white" />
                 </button>
               </fieldset>

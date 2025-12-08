@@ -6,6 +6,8 @@ import { SessionProvider } from "next-auth/react";
 import { ThemeContextProvider } from "./context/ThemeContext";
 import { Providers } from "./providers";
 import { Outfit } from "next/font/google";
+import ToastProvider from "./components/toast-alert";
+
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -29,6 +31,7 @@ export default function RootLayout({
         <Providers>
           <ThemeContextProvider>
             <SessionProvider>
+              <ToastProvider>
               <div className="h-24 px-30 py-4 fixed bg-white w-full z-10">
                 <NavBar />
               </div>
@@ -36,6 +39,7 @@ export default function RootLayout({
               <div className="px-30 py-3 mt-5 bg-zinc-50">
                 <Footer />
               </div>
+              </ToastProvider>
             </SessionProvider>
           </ThemeContextProvider>
         </Providers>

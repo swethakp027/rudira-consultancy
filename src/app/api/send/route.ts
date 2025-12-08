@@ -20,7 +20,13 @@ export async function POST(req: Request) {
       from: process.env.SMTP_USER,
       to: process.env.SMTP_USER,
       subject,
-      html: `<p>Name:${message.name}</p><p>Mobile Number:${message.mobile}</p><p>Email address:${message.email}</p><p>Requested Service:${message.service}</p>`,
+      html: `
+      <p>Name:${message.name}</p>
+      <p>Mobile Number:${message.mobile}</p>
+      <p>Email address:${message.email}</p>
+      <p>Requested Service:${message.service?message.service:''}</p>
+      <p>Comment:${message.comment?message.comment:''}</p>
+      `,
     });
 
     return Response.json({ success: true });

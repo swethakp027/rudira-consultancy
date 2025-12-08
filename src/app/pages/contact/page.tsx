@@ -4,17 +4,20 @@ import { useRouter } from "next/navigation";
 import { CONSTANTS } from "@/app/lib/constants";
 import PageHeader from "@/app/components/page-header";
 import CircleBox from "@/app/components/circle-box";
+import { useToast } from "@/app/components/custom-hooks/use-toast";
 
 export default function Page() {
   const router = useRouter();
   const [generating, setGenerating] = useState(false);
+  const [showErrorText, setShowErrorText] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
+    mobile: "",
     question: "",
     comment: "",
   });
+  const { showToast, ToastComponent } = useToast();
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -26,9 +29,26 @@ export default function Page() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+          debugger
+
     console.log(formData);
-    router.push("/");
+    if (!allFieldsFilled(formData)) {
+      setShowErrorText(true);
+    } else {
+      sendEmail(e);
+      setShowErrorText(false);
+    }  
   };
+
+    function allFieldsFilled(obj: Record<string, any>) {
+      const requiredObj = JSON.parse(JSON.stringify(obj))
+      delete requiredObj.comment;
+      delete requiredObj.question;
+    return Object.values(requiredObj).every((value) => {
+      if (typeof value === "string") return value.trim() !== "";
+      return value !== null && value !== undefined;
+    });
+  }
 
   const generateContent = async () => {
     setGenerating(true);
@@ -46,8 +66,37 @@ export default function Page() {
     setFormData((prev) => ({ ...prev, comment: data.reply }));
   };
 
+    const sendEmail = async (e: any) => {
+    e.preventDefault();
+    const res = await fetch("/api/send", {
+      method: "POST",
+      body: JSON.stringify({
+        subject: "User contacted",
+        message: formData,
+      }),
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      setFormData({
+        name: "",
+        email: "",
+        mobile: "",
+        question: "",
+        comment: "",
+      });
+      showToast("Message sent successfully!!");
+      setTimeout(() => {
+        // router.push("/");
+      }, 1000);
+    } else {
+      console.error("Failed to send email.");
+    }
+  };
+
   return (
     <div>
+      <ToastComponent />
       <PageHeader>
         <div className="text-6xl absolute bottom-1 font-bold z-9">Get in touch</div>
       <CircleBox/>
@@ -67,6 +116,9 @@ export default function Page() {
           <h2 className="text-3xl mb-10 font-bold">Leave A Message</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
+              {showErrorText && (
+                <p className="text-red-500 py-4 ">Please fill all the fields.</p>
+              )}
               <input
                 type="text"
                 id="name"
@@ -91,10 +143,10 @@ export default function Page() {
             <div>
               <input
                 type="text"
-                id="phone"
-                name="phone"
-                placeholder="Phone"
-                value={formData.phone}
+                id="mobile"
+                name="mobile"
+                placeholder="mobile"
+                value={formData.mobile}
                 onChange={handleChange}
                 className="w-full p-4 rounded-sm bg-gray-100 focus:outline-none"
               />

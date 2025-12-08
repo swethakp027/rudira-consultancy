@@ -10,7 +10,7 @@ export function SignIn({
         await signIn(provider)
       }}
     >
-      <button>Sign In</button>
+      <button className="border-l border-zinc-200 pl-2 text-xl cursor-pointer">Sign in</button>
     </form>
   )
 }
